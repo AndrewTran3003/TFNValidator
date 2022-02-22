@@ -1,4 +1,9 @@
 C:\Side Projects\TFNValidator\TFNValidator_Test\bin\Debug\net5.0\CoverletSourceRootsMapping
+C:\Side Projects\TFNValidator\TFNValidator_Test\obj\Debug\net5.0\TFNValidator_Test.csproj.AssemblyReference.cache
+C:\Side Projects\TFNValidator\TFNValidator_Test\obj\Debug\net5.0\TFNValidator_Test.GeneratedMSBuildEditorConfig.editorconfig
+C:\Side Projects\TFNValidator\TFNValidator_Test\obj\Debug\net5.0\TFNValidator_Test.AssemblyInfoInputs.cache
+C:\Side Projects\TFNValidator\TFNValidator_Test\obj\Debug\net5.0\TFNValidator_Test.AssemblyInfo.cs
+C:\Side Projects\TFNValidator\TFNValidator_Test\obj\Debug\net5.0\TFNValidator_Test.csproj.CoreCompileInputs.cache
 C:\Side Projects\TFNValidator\TFNValidator_Test\bin\Debug\net5.0\testhost.dll
 C:\Side Projects\TFNValidator\TFNValidator_Test\bin\Debug\net5.0\TFNValidator.deps.json
 C:\Side Projects\TFNValidator\TFNValidator_Test\bin\Debug\net5.0\TFNValidator.runtimeconfig.json
@@ -100,11 +105,6 @@ C:\Side Projects\TFNValidator\TFNValidator_Test\bin\Debug\net5.0\zh-Hant\Microso
 C:\Side Projects\TFNValidator\TFNValidator_Test\bin\Debug\net5.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
 C:\Side Projects\TFNValidator\TFNValidator_Test\bin\Debug\net5.0\TFNValidator.dll
 C:\Side Projects\TFNValidator\TFNValidator_Test\bin\Debug\net5.0\TFNValidator.pdb
-C:\Side Projects\TFNValidator\TFNValidator_Test\obj\Debug\net5.0\TFNValidator_Test.csproj.AssemblyReference.cache
-C:\Side Projects\TFNValidator\TFNValidator_Test\obj\Debug\net5.0\TFNValidator_Test.GeneratedMSBuildEditorConfig.editorconfig
-C:\Side Projects\TFNValidator\TFNValidator_Test\obj\Debug\net5.0\TFNValidator_Test.AssemblyInfoInputs.cache
-C:\Side Projects\TFNValidator\TFNValidator_Test\obj\Debug\net5.0\TFNValidator_Test.AssemblyInfo.cs
-C:\Side Projects\TFNValidator\TFNValidator_Test\obj\Debug\net5.0\TFNValidator_Test.csproj.CoreCompileInputs.cache
 C:\Side Projects\TFNValidator\TFNValidator_Test\obj\Debug\net5.0\TFNValidator_Test.csproj.CopyComplete
 C:\Side Projects\TFNValidator\TFNValidator_Test\obj\Debug\net5.0\TFNValidator_Test.dll
 C:\Side Projects\TFNValidator\TFNValidator_Test\obj\Debug\net5.0\ref\TFNValidator_Test.dll

@@ -21,7 +21,6 @@ C:\Side Projects\TFNValidator\TFNValidator\obj\Debug\net5.0\TFNValidator.MvcAppl
 C:\Side Projects\TFNValidator\TFNValidator\obj\Debug\net5.0\scopedcss\bundle\TFNValidator.styles.css
 C:\Side Projects\TFNValidator\TFNValidator\obj\Debug\net5.0\staticwebassets\TFNValidator.StaticWebAssets.Manifest.cache
 C:\Side Projects\TFNValidator\TFNValidator\obj\Debug\net5.0\TFNValidator.RazorTargetAssemblyInfo.cache
-C:\Side Projects\TFNValidator\TFNValidator\obj\Debug\net5.0\TFNValidator.csproj.CopyComplete
 C:\Side Projects\TFNValidator\TFNValidator\obj\Debug\net5.0\TFNValidator.dll
 C:\Side Projects\TFNValidator\TFNValidator\obj\Debug\net5.0\ref\TFNValidator.dll
 C:\Side Projects\TFNValidator\TFNValidator\obj\Debug\net5.0\TFNValidator.pdb
