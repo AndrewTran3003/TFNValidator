@@ -40,7 +40,7 @@ namespace TFNValidator_Test
         [DataRow(5, 6)]
         [DataRow(6, 3)]
         [DataRow(7, 5)]
-        [DataRow(8, 2)]
+        [DataRow(8, 1)]
         [DataRow(9, 0)]
         [DataRow(0, 0)]
         [DataRow(20, 0)]
