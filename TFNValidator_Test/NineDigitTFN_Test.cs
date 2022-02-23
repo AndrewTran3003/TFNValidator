@@ -32,6 +32,22 @@ namespace TFNValidator_Test
         {
             Assert.AreEqual(expect, DigitHelper.GetWeightFactor_NineDigit(input));
         }
+        [TestMethod]
+        [DataRow(1, 10)]
+        [DataRow(2, 7)]
+        [DataRow(3, 8)]
+        [DataRow(4, 4)]
+        [DataRow(5, 6)]
+        [DataRow(6, 3)]
+        [DataRow(7, 5)]
+        [DataRow(8, 2)]
+        [DataRow(9, 0)]
+        [DataRow(0, 0)]
+        [DataRow(20, 0)]
+        public void GetWeightFactor_EightDigit_Test(int input, int expect)
+        {
+            Assert.AreEqual(expect, DigitHelper.GetWeightFactor_EightDigit(input));
+        }
 
     }
     [TestClass]

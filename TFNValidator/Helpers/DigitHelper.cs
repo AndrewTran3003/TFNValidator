@@ -27,5 +27,21 @@ namespace TFNValidator.Helpers
                 _ => 0,
             };
         }
+
+        public static int GetWeightFactor_EightDigit(int input)
+        {
+            return input switch
+            {
+                1 => 10,
+                2 => 7,
+                3 => 8,
+                4 => 4,
+                5 => 6,
+                6 => 3,
+                7 => 5,
+                8 => 2,
+                _ => 0
+            };
+        }
     }
 }
