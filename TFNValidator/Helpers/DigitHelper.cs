@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace TFNValidator.Helpers
 {
@@ -21,6 +22,11 @@ namespace TFNValidator.Helpers
 
         #region Public Methods
 
+        public static bool ContainsOnlyNumber(string input)
+        {
+            Regex onlyNumber = new("^[0-9\\s]+$");
+            return onlyNumber.IsMatch(input);
+        }
         public static int GetWeightFactor_EightDigit(int input)
         {
             if (input == 8)
