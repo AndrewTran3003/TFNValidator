@@ -10,24 +10,35 @@ namespace TFNValidator.Services.Concrete
     {
         public bool VerifyNineDigitTfn(string tfnNumber)
         {
-            string tfnTrimmed = DigitHelper.RemoveWhiteSpace(tfnNumber);
-            if (!DigitHelper.ContainsOnlyNumber(tfnTrimmed))
-            {
-                return false;
-            }
-            int factor = tfnTrimmed.Select((numberChar, index) => DigitHelper.GetWeightFactor_NineDigit(index+1) * DigitHelper.ConvertToInt(numberChar)).Sum() % 11;
-            return factor == 0;
+            return VerifyTfn(tfnNumber, DigitHelper.GetWeightFactor_NineDigit);
         }
 
         public bool VerifyEightDigitTfn(string tfnNumber)
+        {
+            return VerifyTfn(tfnNumber, DigitHelper.GetWeightFactor_EightDigit);
+        }
+        private bool VerifyTfn(string tfnNumber, Func<int,int> weightFactorFunc)
         {
             string tfnTrimmed = DigitHelper.RemoveWhiteSpace(tfnNumber);
             if (!DigitHelper.ContainsOnlyNumber(tfnTrimmed))
             {
                 return false;
             }
-            int factor = tfnTrimmed.Select((numberChar, index) => DigitHelper.GetWeightFactor_EightDigit(index + 1) * DigitHelper.ConvertToInt(numberChar)).Sum() % 11;
-            return factor == 0;
+            return Result();
+
+
+            IEnumerable<int> WeightFactorTimesNumberList()
+            {
+                return tfnTrimmed.Select(WeightFactorTimesNumber);
+            }
+            int WeightFactorTimesNumber(char numberChar, int index)
+            {
+                return weightFactorFunc(index + 1) * DigitHelper.ConvertToInt(numberChar);
+            }
+            bool Result()
+            {
+                return WeightFactorTimesNumberList().Sum() % 11 == 0;
+            } 
         }
     }
 }
