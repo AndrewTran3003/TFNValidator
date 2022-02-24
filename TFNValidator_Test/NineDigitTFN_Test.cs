@@ -89,10 +89,26 @@ namespace TFNValidator_Test
         [DataRow("648 188 535", true)]
         [DataRow("714 925 631", true)]
 
-        public void VerifyNineDigitTfn_Test(string input, bool output)
+        public void VerifyNineDigitTfn_Test(string input, bool expect)
         {
             TfnValidator validator = new();
-            Assert.AreEqual(output, validator.VerifyNineDigitTfn(input));
+            Assert.AreEqual(expect, validator.VerifyNineDigitTfn(input));
+        }
+
+        [TestMethod]
+        [DataRow("37 118 629", true)]
+        [DataRow("37 118  629  ", true)]
+        [DataRow("37 118 628", false)]
+        [DataRow("37 118 660", true)]
+        [DataRow("37 118 661", false)]
+        [DataRow("37 118 705", true)]
+        [DataRow("38 593 474", true)]
+        [DataRow("85 655 797", true)]
+
+        public void VerifyEightDigitTfn_Test(string input, bool expect)
+        {
+            TfnValidator validator = new();
+            Assert.AreEqual(expect, validator.VerifyEightDigitTfn(input));
         }
     }
 }

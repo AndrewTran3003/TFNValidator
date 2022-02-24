@@ -19,6 +19,15 @@ namespace TFNValidator.Services.Concrete
             return factor == 0;
         }
 
-        
+        public bool VerifyEightDigitTfn(string tfnNumber)
+        {
+            string tfnTrimmed = DigitHelper.RemoveWhiteSpace(tfnNumber);
+            if (!DigitHelper.ContainsOnlyNumber(tfnTrimmed))
+            {
+                return false;
+            }
+            int factor = tfnTrimmed.Select((numberChar, index) => DigitHelper.GetWeightFactor_EightDigit(index + 1) * DigitHelper.ConvertToInt(numberChar)).Sum() % 11;
+            return factor == 0;
+        }
     }
 }
