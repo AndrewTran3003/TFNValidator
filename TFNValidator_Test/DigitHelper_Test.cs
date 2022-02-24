@@ -53,7 +53,7 @@ namespace TFNValidator_Test
         [DataRow(9, 1)]
         public void GetWeightFactor_NineDigit_Test(int input, int expect)
         {
-            Assert.AreEqual(expect, DigitHelper.GetWeightFactor_NineDigit(input));
+            Assert.AreEqual(expect, WeightFactorHelper.Get_NineDigit(input));
         }
         [TestMethod]
         [DataRow(1, 10)]
@@ -67,7 +67,7 @@ namespace TFNValidator_Test
 
         public void GetWeightFactor_EightDigit_Test(int input, int expect)
         {
-            Assert.AreEqual(expect, DigitHelper.GetWeightFactor_EightDigit(input));
+            Assert.AreEqual(expect, WeightFactorHelper.Get_EightDigit(input));
         }
 
     }

@@ -10,12 +10,12 @@ namespace TFNValidator.Services.Concrete
     {
         public bool VerifyNineDigitTfn(string tfnNumber)
         {
-            return VerifyTfn(tfnNumber, DigitHelper.GetWeightFactor_NineDigit);
+            return VerifyTfn(tfnNumber, WeightFactorHelper.Get_NineDigit);
         }
 
         public bool VerifyEightDigitTfn(string tfnNumber)
         {
-            return VerifyTfn(tfnNumber, DigitHelper.GetWeightFactor_EightDigit);
+            return VerifyTfn(tfnNumber, WeightFactorHelper.Get_EightDigit);
         }
         private bool VerifyTfn(string tfnNumber, Func<int,int> weightFactorFunc)
         {
