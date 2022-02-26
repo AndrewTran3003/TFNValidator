@@ -3,21 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TFNValidator.Helpers;
+using TFNValidator.Services.Abstract;
 
 namespace TFNValidator.Services.Concrete
 {
-    public class TfnValidator
+    public class CommonTfnValidator : ICommonTfnValidator
     {
-        public bool VerifyNineDigitTfn(string tfnNumber)
-        {
-            return VerifyTfn(tfnNumber, WeightFactorHelper.Get_NineDigit);
-        }
-
-        public bool VerifyEightDigitTfn(string tfnNumber)
-        {
-            return VerifyTfn(tfnNumber, WeightFactorHelper.Get_EightDigit);
-        }
-        private bool VerifyTfn(string tfnNumber, Func<int,int> weightFactorFunc)
+        public bool ValidateTfn(string tfnNumber, Func<int, int> weightFactorFunc)
         {
             string tfnTrimmed = DigitHelper.RemoveWhiteSpace(tfnNumber);
             if (!DigitHelper.ContainsOnlyNumber(tfnTrimmed))
@@ -38,7 +30,7 @@ namespace TFNValidator.Services.Concrete
             bool Result()
             {
                 return WeightFactorTimesNumberList().Sum() % 11 == 0;
-            } 
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TFNValidator.Helpers;
+using TFNValidator.Services.Abstract;
 using TFNValidator.Services.Concrete;
 
 namespace TFNValidator_Test
@@ -22,8 +23,9 @@ namespace TFNValidator_Test
 
         public void VerifyNineDigitTfn_Test(string input, bool expect)
         {
-            TfnValidator validator = new();
-            Assert.AreEqual(expect, validator.VerifyNineDigitTfn(input));
+            ICommonTfnValidator commonValidator = new CommonTfnValidator();
+            INineDigitTfnValidator validator = new NineDigitTfnValidator(commonValidator);
+            Assert.AreEqual(expect, validator.Validate(input));
         }
 
         [TestMethod]
@@ -38,8 +40,9 @@ namespace TFNValidator_Test
 
         public void VerifyEightDigitTfn_Test(string input, bool expect)
         {
-            TfnValidator validator = new();
-            Assert.AreEqual(expect, validator.VerifyEightDigitTfn(input));
+            ICommonTfnValidator commonValidator = new CommonTfnValidator();
+            IEightDigiValidator validator = new EightDigitValidator(commonValidator);
+            Assert.AreEqual(expect, validator.Validate(input));
         }
     }
 }
