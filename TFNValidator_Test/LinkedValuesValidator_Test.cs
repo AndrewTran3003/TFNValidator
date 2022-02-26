@@ -4,15 +4,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TFNValidator.Helpers;
 using TFNValidator.Model;
 using TFNValidator.Services.Concrete;
 
 namespace TFNValidator_Test
 {
     [TestClass]
+    public class LinkedValueHelper_Test
+    {
+        [TestMethod]
+        [DataRow("123456789", "123459876", true)]
+        [DataRow("123459876", "443459871", true)]
+        [DataRow("123456789", "443459871", false)]
+        public void IsLinked_Test(string string1, string string2, bool expect)
+        {
+            Assert.AreEqual(expect, LinkedValueHelper.IsLinked(string1,string2));
+        }
+    }
+    [TestClass]
     public class LinkedValuesValidator_Test
     {
         [TestMethod]
+
         [DynamicData(nameof(TestData))]
         public void AreThreeValuesLinked_Test(List<RequestEntry> input, bool expect)
         {
