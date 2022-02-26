@@ -7,9 +7,34 @@ namespace TFNValidator.Helpers
 {
     public static class LinkedValueHelper
     {
-        public static bool IsLinked(string string1, string string2)
+        public static bool IsLinked(string tfnTrimmed1, string tfnTrimmed2)
         {
-            return true;
+            int count = 0;
+            for (int i = 0; i < tfnTrimmed1.Length; i++)
+            {
+                int i2 = i;
+                for (int j = 0; j < tfnTrimmed2.Length; j++)
+                {
+                    if (tfnTrimmed1[i2] != tfnTrimmed2[j])
+                    {
+                        count = 0;
+                        continue;
+                    }
+                    i2++;
+                    count++;
+                    if (count == 4)
+                    {
+                        return true;
+                    }
+                    if (i2 == tfnTrimmed1.Length)
+                    {
+                        return false;
+                    }
+                    
+                }
+            }
+            
+            return false;
         }
     }
 }
