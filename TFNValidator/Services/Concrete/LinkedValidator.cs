@@ -15,7 +15,7 @@ namespace TFNValidator.Services.Concrete
             int count = 0;
             for(int i = 0; i < recentRequests.Count - 1; i++)
             {
-                for (int j = 1; j < recentRequests.Count; j++)
+                for (int j = i + 1; j < recentRequests.Count; j++)
                 {
                     if (IsLinked(recentRequests[i],recentRequests[j]))
                     {

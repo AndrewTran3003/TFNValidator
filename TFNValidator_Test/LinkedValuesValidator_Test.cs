@@ -20,6 +20,9 @@ namespace TFNValidator_Test
         [DataRow("598755221", "44345987123", true)]
         [DataRow("123456789", "443459871", false)]
         [DataRow("123456789", "98765432", false)]
+        [DataRow("98765987123", "598755221", true)]
+        [DataRow("98765987123", "123456789", false)]
+        [DataRow("598755221", "123456789", false)]
 
         public void IsLinked_Test(string string1, string string2, bool expect)
         {
@@ -65,6 +68,32 @@ namespace TFNValidator_Test
                         }
                     },
                     true
+                };
+
+                yield return new object[]
+                {
+                    new List<RequestEntry>
+                    {
+                        new ()
+                        {
+                            Id = new Guid(),
+                            Value = "98765987123",
+                            DateSubmitted = DateTime.Parse("03/01/2009 05:42:00")
+                        },
+                        new ()
+                        {
+                            Id = new Guid(),
+                            Value = "598755221",
+                            DateSubmitted = DateTime.Parse("03/01/2009 05:42:05")
+                        },
+                        new ()
+                        {
+                            Id = new Guid(),
+                            Value = "123456789",
+                            DateSubmitted = DateTime.Parse("03/01/2009 05:42:10")
+                        }
+                    },
+                    false
                 };
 
             }
