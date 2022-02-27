@@ -23,7 +23,8 @@ namespace TFNValidator_FrontEnd
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
+            services.AddControllersWithViews();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,7 +50,9 @@ namespace TFNValidator_FrontEnd
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapRazorPages();
+                endpoints.MapControllerRoute(
+                                             "default",
+                                             "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

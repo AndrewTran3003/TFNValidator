@@ -8,11 +8,10 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-<div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-@await RenderSectionAsync("Scripts", required: false)
+
+    <main role="main">
+        @RenderBody()
+    </main>
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
