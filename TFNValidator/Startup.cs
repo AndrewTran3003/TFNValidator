@@ -6,6 +6,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using TFNValidator.Data;
+using TFNValidator.Repositories.Abstract;
+using TFNValidator.Services.Abstract;
+using TFNValidator.Services.Concrete;
 
 namespace TFNValidator
 {
@@ -50,6 +53,13 @@ namespace TFNValidator
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<ICommonTfnValidator, CommonTfnValidator>();
+            services.AddScoped<IEightDigiValidator, EightDigitValidator>();
+            services.AddScoped<INineDigitTfnValidator, NineDigitTfnValidator>();
+            services.AddScoped<ITfnValidatorFactory, TfnValidatorFactory>();
+            services.AddScoped<ILinkedValueValidator, LinkedValueValidator>();
+            services.AddScoped<ITfnService, TfnService>();
+            services.AddScoped<IRequestEntriesRepository, IRequestEntriesRepository>();
             services.AddDbContext<RequestEntriesContext>(options => { options.UseSqlServer(Configuration.GetConnectionString("RequestEntriesDatabase")); });
             services.AddControllers();
             services.AddSwaggerGen(c =>
