@@ -18,7 +18,7 @@ namespace TFNValidator_Test
         [DynamicData(nameof(AreThreeValuesLinked_Data))]
         public void AreThreeValuesLinked_Test(List<RequestEntry> input, bool expect)
         {
-            LinkedValidator validator = new();
+            LinkedValueValidator validator = new();
             Assert.AreEqual(expect, validator.Validate(input));
         }
         

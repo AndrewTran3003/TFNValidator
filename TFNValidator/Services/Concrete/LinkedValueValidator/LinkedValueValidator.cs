@@ -8,7 +8,7 @@ using TFNValidator.Services.Abstract;
 
 namespace TFNValidator.Services.Concrete
 {
-    public class LinkedValidator : ILinkedValidator
+    public class LinkedValueValidator : ILinkedValueValidator
     {
         public bool Validate(List<RequestEntry> recentRequests)
         {

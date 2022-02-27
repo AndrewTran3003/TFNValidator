@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TFNValidator.Model;
 
 namespace TFNValidator.Services.Abstract
 {
-    public interface ILinkedValidator
+    public interface ITfnValidatorFactory:ITfnValidator
     {
-        public bool Validate(List<RequestEntry> input);
+        
     }
 }
