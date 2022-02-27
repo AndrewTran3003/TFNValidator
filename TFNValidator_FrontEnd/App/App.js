@@ -3,7 +3,11 @@
 function App() {
     return (
         <>
-            <h1>Hello, World!</h1>
+            <div>
+                <label>Tax File Number validator</label>
+                <input type="text" />
+            </div>
+           
         </>
     );
 } export default App;
