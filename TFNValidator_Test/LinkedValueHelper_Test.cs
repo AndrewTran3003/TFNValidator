@@ -9,7 +9,141 @@ namespace TFNValidator_Test
     [TestClass]
     public class LinkedValueHelper_Test
     {
+        #region Private Properties
+
+        private static IEnumerable<object[]> GetDataEntriesLast30Seconds_Date
+        {
+            get
+            {
+                yield return new object[]
+                {
+                    new List<RequestEntry>
+                    {
+                        new()
+                        {
+                            Id = new Guid(),
+                            Value = "123456789",
+                            DateSubmitted = DateTime.Now.AddSeconds(-5)
+                        },
+                        new()
+                        {
+                            Id = new Guid(),
+                            Value = "123459876",
+                            DateSubmitted = DateTime.Now.AddSeconds(-10)
+                        },
+                        new()
+                        {
+                            Id = new Guid(),
+                            Value = "443459871",
+                            DateSubmitted = DateTime.Now.AddSeconds(-15)
+                        },
+                        new()
+                        {
+                            Id = new Guid(),
+                            Value = "443459871",
+                            DateSubmitted = DateTime.Now.AddSeconds(-35)
+                        },
+                        new()
+                        {
+                            Id = new Guid(),
+                            Value = "443459871",
+                            DateSubmitted = DateTime.Now.AddSeconds(-38)
+                        },
+                        new()
+                        {
+                            Id = new Guid(),
+                            Value = "443459871",
+                            DateSubmitted = DateTime.Now.AddSeconds(-40)
+                        }
+                    },
+                    3
+                };
+            }
+        }
+
+        private static IEnumerable<object[]> IsEntryWithin30SecondsFromNow_Data
+        {
+            get
+            {
+                yield return new object[]
+                {
+                    new RequestEntry
+                    {
+                        Id = new Guid(),
+                        Value = "123456789",
+                        DateSubmitted = DateTime.Now.AddSeconds(-5)
+                    },
+                    true
+                };
+                yield return new object[]
+                {
+                    new RequestEntry
+                    {
+                        Id = new Guid(),
+                        Value = "123459876",
+                        DateSubmitted = DateTime.Now.AddSeconds(-10)
+                    },
+                    true
+                };
+                yield return new object[]
+                {
+                    new RequestEntry
+                    {
+                        Id = new Guid(),
+                        Value = "443459871",
+                        DateSubmitted = DateTime.Now.AddSeconds(-15)
+                    },
+                    true,
+                };
+                yield return new object[]
+                {
+                    new RequestEntry
+                    {
+                        Id = new Guid(),
+                        Value = "443459871",
+                        DateSubmitted = DateTime.Now.AddSeconds(-35)
+                    },
+                    false,
+                };
+                yield return new object[]
+                {
+                    new RequestEntry
+                    {
+                        Id = new Guid(),
+                        Value = "443459871",
+                        DateSubmitted = DateTime.Now.AddSeconds(-38)
+                    },
+                    false,
+                };
+                yield return new object[]
+                {
+                    new RequestEntry
+                    {
+                        Id = new Guid(),
+                        Value = "443459871",
+                        DateSubmitted = DateTime.Now.AddSeconds(-40)
+                    },
+                    false
+                };
+            }
+        }
+
+        #endregion Private Properties
+
         #region Public Methods
+
+        [TestMethod]
+        [DynamicData(nameof(GetDataEntriesLast30Seconds_Date))]
+        public void GetDataEntriesLast30Seconds_Test(List<RequestEntry> input, int expect)
+        {
+            Assert.AreEqual(expect, LinkedValueHelper.GetDataEntriesLast30Seconds(input).Count);
+        }
+        [TestMethod]
+        [DynamicData(nameof(IsEntryWithin30SecondsFromNow_Data))]
+        public void IsEntryWithin30SecondsFromNow_Test(RequestEntry entry, bool expect)
+        {
+            Assert.AreEqual(expect, LinkedValueHelper.IsEntryWithin30SecondsFromNow(entry));
+        }
 
         [TestMethod]
         [DataRow("123456789", "123459876", true)]
@@ -25,62 +159,7 @@ namespace TFNValidator_Test
         {
             Assert.AreEqual(expect, LinkedValueHelper.IsLinked(string1, string2));
         }
-        [TestMethod]
 
-        [DynamicData(nameof(GetDataEntriesLast30Seconds_Date))]
-        public void GetDataEntriesLast30Seconds_Test(List<RequestEntry> input, int expect)
-        {
-            Assert.AreEqual(expect,LinkedValueHelper.GetDataEntriesLast30Seconds(input).Count);
-        }
-        private static IEnumerable<object[]> GetDataEntriesLast30Seconds_Date
-        {
-            get
-            {
-                yield return new object[]
-                {
-                    new List<RequestEntry>
-                    {
-                        new ()
-                        {
-                            Id = new Guid(),
-                            Value = "123456789",
-                            DateSubmitted = DateTime.Now.AddSeconds(-5)
-                        },
-                        new ()
-                        {
-                            Id = new Guid(),
-                            Value = "123459876",
-                            DateSubmitted = DateTime.Now.AddSeconds(-10)
-                        },
-                        new ()
-                        {
-                            Id = new Guid(),
-                            Value = "443459871",
-                            DateSubmitted = DateTime.Now.AddSeconds(-15)
-                        },
-                        new ()
-                        {
-                            Id = new Guid(),
-                            Value = "443459871",
-                            DateSubmitted = DateTime.Now.AddSeconds(-35)
-                        },
-                        new ()
-                        {
-                            Id = new Guid(),
-                            Value = "443459871",
-                            DateSubmitted = DateTime.Now.AddSeconds(-38)
-                        },
-                        new ()
-                        {
-                            Id = new Guid(),
-                            Value = "443459871",
-                            DateSubmitted = DateTime.Now.AddSeconds(-40)
-                        }
-                    },
-                    3
-                };
-            }
-        }
         #endregion Public Methods
     }
 }

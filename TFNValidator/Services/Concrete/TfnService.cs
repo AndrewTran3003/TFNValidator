@@ -10,11 +10,7 @@ namespace TFNValidator.Services.Concrete
 {
     public class TfnService : ITfnService
     {
-        private readonly RequestEntriesContext _context;
-        public TfnService(RequestEntriesContext context)
-        {
-            _context = context;
-        }
+
         public OperationResultMessage<object> ValidateTfnString(string tfnString)
         {
             string tfnTrimmed = StringHelper.RemoveWhiteSpace(tfnString);
