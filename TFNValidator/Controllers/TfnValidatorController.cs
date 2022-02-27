@@ -8,6 +8,8 @@ using TFNValidator.Services.Abstract;
 
 namespace TFNValidator.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class TfnValidatorController:ControllerBase
     {
         private readonly ITfnService _tfnService;
@@ -15,7 +17,9 @@ namespace TFNValidator.Controllers
         {
             _tfnService = tfnService;
         }
-        public IActionResult ValidateTfnString ([FromBody] string tfnString)
+        [HttpGet]
+        [Route("Validate")]
+        public IActionResult ValidateTfnString (string tfnString)
         {
             OperationResultMessage<object> tfnValidationMessage = _tfnService.ValidateTfnString(tfnString);
             if (tfnValidationMessage.Status != OperationResultMessageStatus.Success)

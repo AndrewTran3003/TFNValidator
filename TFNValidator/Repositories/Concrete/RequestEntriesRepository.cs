@@ -23,7 +23,8 @@ namespace TFNValidator.Repositories.Concrete
                 Id = new Guid(),
                 DateSubmitted = DateTime.Now,
                 Value = tfnValue
-            }); 
+            });
+            _context.SaveChanges();
         }
 
         public List<RequestEntry> GetRequestEntriesLast30Seconds()
