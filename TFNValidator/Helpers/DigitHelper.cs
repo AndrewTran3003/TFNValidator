@@ -17,10 +17,7 @@ namespace TFNValidator.Helpers
             return numberChar - '0';
         }
 
-        public static string RemoveWhiteSpace(string input)
-        {
-            return input.Replace(" ", string.Empty);
-        }
+        
 
         #endregion Public Methods
     }
