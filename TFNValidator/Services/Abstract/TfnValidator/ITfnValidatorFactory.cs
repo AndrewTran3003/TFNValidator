@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace TFNValidator.Services.Abstract
 {
-    public interface ITfnValidatorFactory:ITfnValidator
+    public interface ITfnValidatorFactory
     {
-        
+        public ITfnValidator GetValidator(string input);
     }
 }

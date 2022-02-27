@@ -17,17 +17,18 @@ namespace TFNValidator.Services.Concrete
             _nineDigitTfnValidator = nineDigitTfnValidator;
             _eightDigiValidator = eightDigiValidator;
         }
-        public bool Validate(string tfnNumber)
+
+        public ITfnValidator GetValidator(string tfnNumber)
         {
             if (tfnNumber.Length == 8)
             {
-                return _eightDigiValidator.Validate(tfnNumber);
+                return _eightDigiValidator;
             }
             if (tfnNumber.Length == 9)
             {
-                return _nineDigitTfnValidator.Validate(tfnNumber);
+                return _nineDigitTfnValidator;
             }
-            return false;
+            return null;
         }
     }
 }

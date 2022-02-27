@@ -6,7 +6,7 @@ namespace TFNValidator.Helpers
     {
         #region Public Methods
 
-        public static bool ContainsOnlyNumber(string input)
+        public static bool ContainsOnlyNumberAndWhiteSpace(string input)
         {
             Regex onlyNumber = new("^[0-9\\s]+$");
             return onlyNumber.IsMatch(input);

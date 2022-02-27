@@ -12,7 +12,7 @@ namespace TFNValidator.Services.Concrete
         public bool ValidateTfn(string tfnNumber, Func<int, int> weightFactorFunc)
         {
             string tfnTrimmed = StringHelper.RemoveWhiteSpace(tfnNumber);
-            if (!DigitHelper.ContainsOnlyNumber(tfnTrimmed))
+            if (!DigitHelper.ContainsOnlyNumberAndWhiteSpace(tfnTrimmed))
             {
                 return false;
             }

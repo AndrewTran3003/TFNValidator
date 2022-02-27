@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using TFNValidator.Data;
 using TFNValidator.Repositories.Abstract;
+using TFNValidator.Repositories.Concrete;
 using TFNValidator.Services.Abstract;
 using TFNValidator.Services.Concrete;
 
@@ -58,8 +59,9 @@ namespace TFNValidator
             services.AddScoped<INineDigitTfnValidator, NineDigitTfnValidator>();
             services.AddScoped<ITfnValidatorFactory, TfnValidatorFactory>();
             services.AddScoped<ILinkedValueValidator, LinkedValueValidator>();
+            services.AddScoped<IRequestEntriesRepository, RequestEntriesRepository>();
             services.AddScoped<ITfnService, TfnService>();
-            services.AddScoped<IRequestEntriesRepository, IRequestEntriesRepository>();
+
             services.AddDbContext<RequestEntriesContext>(options => { options.UseSqlServer(Configuration.GetConnectionString("RequestEntriesDatabase")); });
             services.AddControllers();
             services.AddSwaggerGen(c =>

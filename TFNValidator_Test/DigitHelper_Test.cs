@@ -15,7 +15,7 @@ namespace TFNValidator_Test
         [DataRow("  648 188 519 abc ", false)]
         public void ContainsOnlyNumber_Test(string input, bool expect)
         {
-            Assert.AreEqual(expect, DigitHelper.ContainsOnlyNumber(input));
+            Assert.AreEqual(expect, DigitHelper.ContainsOnlyNumberAndWhiteSpace(input));
         }
 
         [TestMethod]
