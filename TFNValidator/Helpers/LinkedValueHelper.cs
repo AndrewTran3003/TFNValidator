@@ -37,11 +37,6 @@ namespace TFNValidator.Helpers
             return false;
         }
 
-        public static List<RequestEntry> GetDataEntriesLast30Seconds(List<RequestEntry> entries)
-        {
-            return entries.Where(IsEntryWithin30SecondsFromNow).ToList(); 
-           
-        }
         public static bool IsEntryWithin30SecondsFromNow(RequestEntry entry)
         {
             return entry.DateSubmitted <= DateTime.Now && entry.DateSubmitted >= DateTime.Now.AddSeconds(-30);

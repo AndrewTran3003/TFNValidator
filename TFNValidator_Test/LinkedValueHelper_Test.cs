@@ -11,56 +11,6 @@ namespace TFNValidator_Test
     {
         #region Private Properties
 
-        private static IEnumerable<object[]> GetDataEntriesLast30Seconds_Date
-        {
-            get
-            {
-                yield return new object[]
-                {
-                    new List<RequestEntry>
-                    {
-                        new()
-                        {
-                            Id = new Guid(),
-                            Value = "123456789",
-                            DateSubmitted = DateTime.Now.AddSeconds(-5)
-                        },
-                        new()
-                        {
-                            Id = new Guid(),
-                            Value = "123459876",
-                            DateSubmitted = DateTime.Now.AddSeconds(-10)
-                        },
-                        new()
-                        {
-                            Id = new Guid(),
-                            Value = "443459871",
-                            DateSubmitted = DateTime.Now.AddSeconds(-15)
-                        },
-                        new()
-                        {
-                            Id = new Guid(),
-                            Value = "443459871",
-                            DateSubmitted = DateTime.Now.AddSeconds(-35)
-                        },
-                        new()
-                        {
-                            Id = new Guid(),
-                            Value = "443459871",
-                            DateSubmitted = DateTime.Now.AddSeconds(-38)
-                        },
-                        new()
-                        {
-                            Id = new Guid(),
-                            Value = "443459871",
-                            DateSubmitted = DateTime.Now.AddSeconds(-40)
-                        }
-                    },
-                    3
-                };
-            }
-        }
-
         private static IEnumerable<object[]> IsEntryWithin30SecondsFromNow_Data
         {
             get
@@ -132,12 +82,6 @@ namespace TFNValidator_Test
 
         #region Public Methods
 
-        [TestMethod]
-        [DynamicData(nameof(GetDataEntriesLast30Seconds_Date))]
-        public void GetDataEntriesLast30Seconds_Test(List<RequestEntry> input, int expect)
-        {
-            Assert.AreEqual(expect, LinkedValueHelper.GetDataEntriesLast30Seconds(input).Count);
-        }
         [TestMethod]
         [DynamicData(nameof(IsEntryWithin30SecondsFromNow_Data))]
         public void IsEntryWithin30SecondsFromNow_Test(RequestEntry entry, bool expect)

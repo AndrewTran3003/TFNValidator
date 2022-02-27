@@ -28,7 +28,7 @@ namespace TFNValidator.Repositories.Concrete
 
         public List<RequestEntry> GetRequestEntriesLast30Seconds()
         {
-            return null;
+            return _context.RequestEntries.Where(LinkedValueHelper.IsEntryWithin30SecondsFromNow).ToList();
         }
     }
 }
