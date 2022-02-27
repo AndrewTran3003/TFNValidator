@@ -1,10 +1,13 @@
-﻿import React from "react";
+﻿import React, { useState } from "react";
 import Alert from "@mui/material/Alert";
 
 
-function StatusSuccess()
-{
+function StatusSuccess() {
+    const [display, setDisplay] = useState("none");
+    const style = {
+        display: display
+    }
     return (
-        <Alert severity="success">This is a success alert — check it out!</Alert>);
+        <Alert sx={style} severity="success"></Alert>);
 }
 export default StatusSuccess;

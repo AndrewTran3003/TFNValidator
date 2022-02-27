@@ -1,10 +1,15 @@
-﻿import React from "react";
+﻿import React, { useState } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 
-function ProgressIndicator()
-{
+function ProgressIndicator() {
+    const [display, setDisplay] = useState("none");
+    const style = {
+        display: display
+    }
     return (
-        <CircularProgress />
+        < >
+            <CircularProgress sx={style} />
+        </>
     );
 }
 export default ProgressIndicator;
