@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TFNValidator.Model;
 
 namespace TFNValidator.Helpers
 {
@@ -35,6 +36,11 @@ namespace TFNValidator.Helpers
             }
             
             return false;
+        }
+
+        public static List<RequestEntry> GetDataEntriesLast30Seconds(List<RequestEntry> entries)
+        {
+            return entries.Where(entry => entry.DateSubmitted <= DateTime.Now && entry.DateSubmitted >= DateTime.Now.AddSeconds(-30)).ToList(); 
         }
     }
 }

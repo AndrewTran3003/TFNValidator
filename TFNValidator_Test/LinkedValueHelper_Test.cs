@@ -1,28 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TFNValidator.Helpers;
 using TFNValidator.Model;
-using TFNValidator.Services.Concrete;
 
 namespace TFNValidator_Test
 {
     [TestClass]
-    public class LinkedValuesValidator_Test
+    public class LinkedValueHelper_Test
     {
+        #region Public Methods
+
+        [TestMethod]
+        [DataRow("123456789", "123459876", true)]
+        [DataRow("123459876", "443459871", true)]
+        [DataRow("598756789", "443459871", true)]
+        [DataRow("598755221", "44345987123", true)]
+        [DataRow("123456789", "443459871", false)]
+        [DataRow("123456789", "98765432", false)]
+        [DataRow("98765987123", "598755221", true)]
+        [DataRow("98765987123", "123456789", false)]
+        [DataRow("598755221", "123456789", false)]
+        public void IsLinked_Test(string string1, string string2, bool expect)
+        {
+            Assert.AreEqual(expect, LinkedValueHelper.IsLinked(string1, string2));
+        }
         [TestMethod]
 
-        [DynamicData(nameof(AreThreeValuesLinked_Data))]
-        public void AreThreeValuesLinked_Test(List<RequestEntry> input, bool expect)
+        [DynamicData(nameof(GetDataEntriesLast30Seconds_Date))]
+        public void GetDataEntriesLast30Seconds_Test(List<RequestEntry> input, int expect)
         {
-            LinkedValidator validator = new();
-            Assert.AreEqual(expect, validator.Validate(input));
+            Assert.AreEqual(expect,LinkedValueHelper.GetDataEntriesLast30Seconds(input).Count);
         }
-        
-        private static IEnumerable<object[]> AreThreeValuesLinked_Data
+        private static IEnumerable<object[]> GetDataEntriesLast30Seconds_Date
         {
             get
             {
@@ -47,38 +57,30 @@ namespace TFNValidator_Test
                             Id = new Guid(),
                             Value = "443459871",
                             DateSubmitted = DateTime.Now.AddSeconds(-15)
-                        }
-                    },
-                    true
-                };
-
-                yield return new object[]
-                {
-                    new List<RequestEntry>
-                    {
-                        new ()
-                        {
-                            Id = new Guid(),
-                            Value = "98765987123",
-                            DateSubmitted = DateTime.Parse("03/01/2009 05:42:00")
                         },
                         new ()
                         {
                             Id = new Guid(),
-                            Value = "598755221",
-                            DateSubmitted = DateTime.Parse("03/01/2009 05:42:05")
+                            Value = "443459871",
+                            DateSubmitted = DateTime.Now.AddSeconds(-35)
                         },
                         new ()
                         {
                             Id = new Guid(),
-                            Value = "123456789",
-                            DateSubmitted = DateTime.Parse("03/01/2009 05:42:10")
+                            Value = "443459871",
+                            DateSubmitted = DateTime.Now.AddSeconds(-38)
+                        },
+                        new ()
+                        {
+                            Id = new Guid(),
+                            Value = "443459871",
+                            DateSubmitted = DateTime.Now.AddSeconds(-40)
                         }
                     },
-                    false
+                    3
                 };
-
             }
         }
+        #endregion Public Methods
     }
 }
