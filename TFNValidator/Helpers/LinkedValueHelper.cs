@@ -14,9 +14,9 @@ namespace TFNValidator.Helpers
             for (int i = 0; i < tfnTrimmed1.Length; i++)
             {
                 int i2 = i;
-                for (int j = 0; j < tfnTrimmed2.Length; j++)
+                foreach (char t in tfnTrimmed2)
                 {
-                    if (tfnTrimmed1[i2] != tfnTrimmed2[j])
+                    if (tfnTrimmed1[i2] != t)
                     {
                         count = 0;
                         continue;
@@ -31,7 +31,6 @@ namespace TFNValidator.Helpers
                     {
                         return false;
                     }
-                    
                 }
             }
             
@@ -40,7 +39,11 @@ namespace TFNValidator.Helpers
 
         public static List<RequestEntry> GetDataEntriesLast30Seconds(List<RequestEntry> entries)
         {
-            return entries.Where(entry => entry.DateSubmitted <= DateTime.Now && entry.DateSubmitted >= DateTime.Now.AddSeconds(-30)).ToList(); 
+            return entries.Where(IsEntriesWithin30SecondsFromNow).ToList(); 
+            bool IsEntriesWithin30SecondsFromNow(RequestEntry entry)
+            {
+                return entry.DateSubmitted <= DateTime.Now && entry.DateSubmitted >= DateTime.Now.AddSeconds(-30);
+            }
         }
     }
 }
