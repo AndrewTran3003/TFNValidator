@@ -3,14 +3,10 @@ import TextField from "@mui/material/TextField";
 
 function Input(props) {
     function setDisabledValue() {
-        console.log(props.formState);
-        if (props.formState.status === "active") {
-            console.log("input is active");
-            return false;
+        if (props.formState.status === "submitting") {
+            return true;
         }
-        console.log("input is disabled");
-
-        return true;
+        return false;
     }
     function setCurrentInput(e) {
         props.setInputValue(e.target.value);

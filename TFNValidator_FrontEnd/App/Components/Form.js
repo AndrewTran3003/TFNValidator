@@ -17,10 +17,10 @@ function Form()
     return (
         <div>
             <Dialog open="true">
-                <StatusIndicator />
+                <StatusIndicator formState={formState} />
                 <FormTitle />
                 <FormContent formState ={formState} setInputValue={setInputValue} />
-                <FormFooter setFormState={setFormState} inputValue ={inputValue}/>
+                <FormFooter formState = {formState} setFormState={setFormState} inputValue ={inputValue}/>
             </Dialog>
         </div>
     );

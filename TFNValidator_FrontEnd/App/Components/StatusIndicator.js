@@ -2,11 +2,26 @@
 import StatusSuccess from "./StatusSuccess";
 import StatusFailure from "./StatusFailure";
 
-function StatusIndicator() {
+function StatusIndicator(props) {
+    function renderStatus()
+    {
+        if (props.formState === "success")
+        {
+            console.log("success state");
+            return (<StatusSuccess />);
+        }
+        if (props.formState === "error")
+        {
+            console.log("error state");
+            return (<StatusFailure />);
+        }
+        return "";
+    }
+
+
     return (
         <>
-            <StatusSuccess />
-            <StatusFailure />
+            {renderStatus()}
         </>
     );
 }

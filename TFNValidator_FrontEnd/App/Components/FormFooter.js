@@ -6,8 +6,8 @@ function FormFooter(props) {
     return (
         <>
             <DialogActions>
-                <ProgressIndicator />
-                <ValidateButton setFormState={props.setFormState} />
+                <ProgressIndicator formState={props.formState} />
+                <ValidateButton  setFormState={props.setFormState} inputValue ={props.inputValue}/>
             </DialogActions>
         </>);
 }

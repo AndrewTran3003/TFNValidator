@@ -1,10 +1,11 @@
 ﻿import React, { useState } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 
-function ProgressIndicator() {
-    const [display, setDisplay] = useState("none");
+function ProgressIndicator(props) {
+
+
     const style = {
-        display: display
+        display: props.formState === "submitting" ? "block" : "none"
     }
     return (
         < >
