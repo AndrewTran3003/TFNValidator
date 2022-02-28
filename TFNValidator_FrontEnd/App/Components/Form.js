@@ -9,6 +9,7 @@ function Form()
 {
     const [formState, setState] = useState(new FormState("active"));
     const [inputValue, setInputValue] = useState("");
+    const [validationMessage, setValidationMessage] = useState("");
     function setFormState(state)
     {
         console.log("called");
@@ -17,10 +18,10 @@ function Form()
     return (
         <div>
             <Dialog open="true">
-                <StatusIndicator formState={formState} />
+                <StatusIndicator formState={formState} validationMessage={validationMessage}/>
                 <FormTitle />
                 <FormContent formState ={formState} setInputValue={setInputValue} />
-                <FormFooter formState = {formState} setFormState={setFormState} inputValue ={inputValue}/>
+                <FormFooter formState={formState} setFormState={setFormState} inputValue={inputValue} setValidationMessage={setValidationMessage}/>
             </Dialog>
         </div>
     );

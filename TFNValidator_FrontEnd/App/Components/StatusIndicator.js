@@ -7,13 +7,11 @@ function StatusIndicator(props) {
     {
         if (props.formState === "success")
         {
-            console.log("success state");
-            return (<StatusSuccess />);
+            return (<StatusSuccess validationMessage={props.validationMessage} />);
         }
         if (props.formState === "error")
         {
-            console.log("error state");
-            return (<StatusFailure />);
+            return (<StatusFailure validationMessage={props.validationMessage}/>);
         }
         return "";
     }

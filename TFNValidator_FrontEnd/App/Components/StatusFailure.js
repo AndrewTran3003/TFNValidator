@@ -1,10 +1,10 @@
-﻿import React, {useState} from "react";
+﻿import React from "react";
 import Alert from "@mui/material/Alert";
 
 
-function StatusFailure() {
+function StatusFailure(props) {
 
     return (
-        <Alert severity="error">This is an error alert — check it out!</Alert>);
+        <Alert severity="error">{props.validationMessage}</Alert>);
 }
 export default StatusFailure;

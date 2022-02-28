@@ -14,13 +14,13 @@ function ValidateButton(props)
         const url = `http://localhost:5001/Validate?tfnString=${inputValue}`;
         const response = await fetch(url);
         const responseText = await response.text();
+        props.setValidationMessage(responseText);
         if (response.status === 200)
         {
             props.setFormState("success");
         }
         else
         {
-            
             props.setFormState("error");
         }
 
