@@ -2,12 +2,12 @@
 import DialogActions from "@mui/material/DialogActions";
 import ProgressIndicator from "./ProgressIndicator"
 import ValidateButton from "./ValidateButton";
-function FormFooter() {
+function FormFooter(props) {
     return (
         <>
             <DialogActions>
                 <ProgressIndicator />
-                <ValidateButton />
+                <ValidateButton setFormState={props.setFormState} />
             </DialogActions>
         </>);
 }

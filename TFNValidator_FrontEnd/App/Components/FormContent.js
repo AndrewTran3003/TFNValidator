@@ -3,12 +3,12 @@ import DialogContent from "@mui/material/DialogContent";
 import Label from "./Label";
 import Input from "./Input";
 
-function FormContent() {
+function FormContent(props) {
     return (
         <>
             <DialogContent >
                 <Label />
-                <Input />
+                <Input formState={props.formState} setInputValue = {props.setInputValue}/>
             </DialogContent>
         </>
 

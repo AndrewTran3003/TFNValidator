@@ -1,8 +1,20 @@
 ﻿import React from 'react';
 import TextField from "@mui/material/TextField";
 
-function Input()
-{
+function Input(props) {
+    function setDisabledValue() {
+        console.log(props.formState);
+        if (props.formState.status === "active") {
+            console.log("input is active");
+            return false;
+        }
+        console.log("input is disabled");
+
+        return true;
+    }
+    function setCurrentInput(e) {
+        props.setInputValue(e.target.value);
+    }
     return (
         <>
             <TextField
@@ -13,6 +25,8 @@ function Input()
                 type="text"
                 fullWidth
                 variant="standard"
+                disabled={setDisabledValue()}
+                onKeyPress={setCurrentInput}
             />
         </>);
 }
