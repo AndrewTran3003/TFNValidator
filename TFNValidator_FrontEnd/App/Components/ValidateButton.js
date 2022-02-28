@@ -11,6 +11,7 @@ function ValidateButton(props)
     {
         setFormCurrentState();
         const inputValue = props.inputValue;
+
         const url = `http://localhost:5001/Validate?tfnString=${inputValue}`;
         const response = await fetch(url);
         const responseText = await response.text();

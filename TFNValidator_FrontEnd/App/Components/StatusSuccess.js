@@ -2,7 +2,7 @@
 import Alert from "@mui/material/Alert";
 
 
-function StatusSuccess() {
+function StatusSuccess(props) {
     return (
         <Alert severity="success">{props.validationMessage}</Alert>);
 }

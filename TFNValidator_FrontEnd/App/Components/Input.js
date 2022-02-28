@@ -9,6 +9,7 @@ function Input(props) {
         return false;
     }
     function setCurrentInput(e) {
+        console.log(e.target.value);
         props.setInputValue(e.target.value);
     }
     return (
@@ -22,7 +23,7 @@ function Input(props) {
                 fullWidth
                 variant="standard"
                 disabled={setDisabledValue()}
-                onKeyPress={setCurrentInput}
+                onChange={setCurrentInput}
             />
         </>);
 }
